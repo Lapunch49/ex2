@@ -1,0 +1,26 @@
+﻿@page "/"
+@using ClientCalculator
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+@if (calc!=null)
+{
+    @calc.Result
+    <p>@calc.Value1 * @calc.Value2 = @calc.Result Multiplication</p>
+}
+
+@code{
+    Calculator calc = new Calculator();
+
+    protected async override Task OnInitializedAsync()
+    {
+        var client = new HttpClient();
+        Client cl = new Client("https://localhost:7007/", client);
+        calc = await cl.MultAsync();
+    }
+}
