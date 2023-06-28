@@ -58,11 +58,5 @@ namespace Calc.Controllers
             HttpContext.Response.Headers.Add("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE, OPTIONS");
             return Ok();
         }
-
-        [HttpHead]
-        public void Head()
-        {
-            
-        }
     }
 }
